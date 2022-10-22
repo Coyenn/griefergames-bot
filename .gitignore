@@ -1,0 +1,4 @@
+node_modules
+minecraft-data/*
+!minecraft-data/server.properties
+account.json
