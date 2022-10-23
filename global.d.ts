@@ -1,3 +1,6 @@
 declare module "prismarine-viewer" {
-    export const mineflayer: any;
+    export function mineflayer(bot: Bot, options: any): any;
+    export const viewer: {
+        WorldView: any;
+    };
 }

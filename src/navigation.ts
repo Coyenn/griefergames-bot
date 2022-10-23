@@ -2,6 +2,7 @@ import { goals } from "mineflayer-pathfinder";
 import GrieferGamesBot from "./bot";
 import Vec3 from "vec3";
 import sleep from "./sleep";
+import { Spot } from "./spots";
 
 export function navigateTo(grieferGamesBot: GrieferGamesBot, goal: goals.Goal): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -39,9 +40,11 @@ export function navigateToCb7(grieferGamesBot: GrieferGamesBot): Promise<void> {
     });
 }
 
-export function goToTradingSpot(grieferGamesBot: GrieferGamesBot): Promise<void> {
+export function navigateToTradingSpot(grieferGamesBot: GrieferGamesBot, spot: Spot): Promise<void> {
     return new Promise((resolve, reject) => {
-        grieferGamesBot.bot.chat("/home trading");
-        sleep(5000).then(() => resolve())
+        grieferGamesBot.bot.chat(spot.command);
+        grieferGamesBot.bot.lookAt(Vec3(spot.orientation[0], spot.orientation[1], spot.orientation[2])).then(() => {
+            resolve();
+        });
     });
 }

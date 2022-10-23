@@ -6,7 +6,7 @@ export interface Account {
 }
 
 export function getAccount(): Account {
-    const accountInfo = readFileSync('./account.json', 'utf-8');
+    const accountInfo = readFileSync('./config/account.json', 'utf-8');
 
     return JSON.parse(accountInfo);
 }
