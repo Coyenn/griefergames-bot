@@ -3,3 +3,4 @@ minecraft-data/*
 !minecraft-data/server.properties
 account.json
 spots.json
+dist
