@@ -33,9 +33,12 @@ export function navigateToPortalRoom(grieferGamesBot: GrieferGamesBot): Promise<
 export function navigateToCb7(grieferGamesBot: GrieferGamesBot): Promise<void> {
     return new Promise((resolve, reject) => {
         sleep(10000).then(() => {
-            navigateTo(grieferGamesBot, new goals.GoalBlock(308, 67, 268)).then(() => {
-                sleep(5000).then(() => resolve())
-            });
+            navigateTo(grieferGamesBot, new goals.GoalBlock(308, 67, 268))
+
+            sleep(10000).then(() => {
+                navigateTo(grieferGamesBot, new goals.GoalBlock(grieferGamesBot.bot.entity.position.x, grieferGamesBot.bot.entity.position.y, grieferGamesBot.bot.entity.position.z));
+                resolve();
+            })
         })
     });
 }

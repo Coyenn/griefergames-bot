@@ -3,6 +3,7 @@ import { readFileSync } from "fs";
 export interface Spot {
     command: string;
     orientation: string[];
+    lookAt: string[];
 }
 
 export function getSpots(): Spot[] {

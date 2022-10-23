@@ -8,6 +8,7 @@ import path from "path";
 import compression from "compression";
 import MinecraftData from "minecraft-data";
 import { Vec3 } from "vec3";
+import logWithContext from "./log";
 
 const WorldView = viewer.WorldView;
 
@@ -78,7 +79,7 @@ export default class GrieferGamesViewer {
         })
 
         this.httpServer.listen(port, () => {
-            console.log('GrieferGames Viewer running on: ' + port);
+            logWithContext('bot', 'GrieferGames Viewer running on: ' + port);
         })
     }
 
