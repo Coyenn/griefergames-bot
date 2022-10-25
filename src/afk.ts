@@ -1,6 +1,6 @@
 import { Vec3 } from "vec3";
 import GrieferGamesBot from "./bot"
-import { getSpots } from "./spots";
+import { getLookAtVec3, getSpots } from "./spots";
 
 export default function afk(grieferGamesBot: GrieferGamesBot) {
     let rotated = false
@@ -8,9 +8,9 @@ export default function afk(grieferGamesBot: GrieferGamesBot) {
 
     function rotate() {
         if (rotated) {
-            grieferGamesBot.bot.lookAt(new Vec3(spots[0].orientation[0] as unknown as number + 0.5, spots[0].orientation[1] as unknown as number, spots[0].orientation[2] as unknown as number));
+            grieferGamesBot.bot.lookAt(getLookAtVec3(spots[0].lookAt, 0.5));
         } else {
-            grieferGamesBot.bot.lookAt(new Vec3(spots[0].orientation[0] as unknown as number, spots[0].orientation[1] as unknown as number, spots[0].orientation[2] as unknown as number));
+            grieferGamesBot.bot.lookAt(getLookAtVec3(spots[0].lookAt));
         }
 
         rotated = !rotated;

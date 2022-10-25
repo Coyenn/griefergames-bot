@@ -3,16 +3,13 @@ import { Vec3 } from "vec3";
 import GrieferGamesBot from "./bot";
 import logWithContext from "./log";
 import sleep from "./sleep";
-
-export interface ChestIndexChestSlot {
-    slot: number;
-    item: string;
-    amount: number;
-}
+import { Block } from "prismarine-block";
+import { Item } from "prismarine-item";
 
 export interface ChestIndexChest {
     chest: Chest;
-    slots: ChestIndexChestSlot[];
+    block: Block;
+    slots: Item[];
 }
 
 export default function indexChests(grieferGamesBot: GrieferGamesBot): Promise<void> {
@@ -37,21 +34,18 @@ export default function indexChests(grieferGamesBot: GrieferGamesBot): Promise<v
 
                 if (block) {
                     setTimeout(() => {
-                        let slots: ChestIndexChestSlot[] = [];
+                        let slots: Item[] = [];
 
                         bot.openChest(block).then((chest: Chest) => {
                             chest.slots.forEach((slot) => {
                                 if (slot && slot.count > 0 && slot.slot <= 27) {
-                                    slots.push({
-                                        slot: slot.slot,
-                                        item: slot.name,
-                                        amount: slot.count
-                                    });
+                                    slots.push(slot);
                                 }
                             });
 
                             chestIndex.push({
                                 chest: chest,
+                                block: block,
                                 slots: slots
                             });
 

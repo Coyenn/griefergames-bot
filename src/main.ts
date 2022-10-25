@@ -11,7 +11,7 @@ async function main() {
     const localGrieferGamesBot = new GrieferGamesBot(account.username, account.auth);
 
     await localGrieferGamesBot.setup();
-    await localGrieferGamesBot.navigateToTradingSpot(spots[0]);
+    //await localGrieferGamesBot.navigateToTradingSpot(spots[0]);
     await localGrieferGamesBot.indexChests();
     await localGrieferGamesBot.startAntiAfk();
 
